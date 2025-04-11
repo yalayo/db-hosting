@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    name: Deploy to to Hezner
+    name: Deploy to Hezner
     runs-on: ubuntu-latest
     steps:
       - name: install ssh keys
@@ -23,7 +23,7 @@ jobs:
           if [ -d ~/${{ secrets.WORK_DIR }}/docker ]; then 
             cd ~/${{ secrets.WORK_DIR }}/docker
             docker compose down
-            cd ~/${{ secrets.WORK_DIR }} 
+            cd ~/
             rm -rf ~/${{ secrets.WORK_DIR }}/
             mkdir ~/${{ secrets.WORK_DIR }}
           else
