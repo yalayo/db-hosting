@@ -1,0 +1,19 @@
+services:
+  db:
+    image: postgres:11.1
+    container_name: prod-db
+    user: root
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=postgres
+    restart: always
+    ports: 
+      - 5432:5432
+    volumes:
+        - ../../postgres-data:/var/lib/postgresql/data
+    networks:
+      - mainnetwork
+
+networks:
+  mainnetwork:
