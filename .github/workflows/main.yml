@@ -21,7 +21,7 @@ jobs:
       - name: Recreate the folder structure
         run: |
           ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} " \
-          if [ -d ~/${{ secrets.WORK_DIR }}/docker ]; then 
+          if [ -d ~/${{ secrets.WORK_DIR }} ]; then 
             cd ~/${{ secrets.WORK_DIR }}/docker
             docker compose down
             cd ~/
