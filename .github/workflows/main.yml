@@ -17,7 +17,7 @@ jobs:
           install -m 600 -D /dev/null ~/.ssh/id_rsa
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
-      - name: Copy image and run it on the VM
+      - name: Recreate the folder structure
         run: |
           ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} " \
           if [ -d ~/${{ secrets.WORK_DIR }}/docker ]; then 
@@ -32,6 +32,7 @@ jobs:
           exit"
       - name: Copy the docker-compose config
         run: |
+          ls -la  
           scp -r ./docker ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.WORK_DIR }}
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
             cd ~/${{ secrets.WORK_DIR }}/docker
