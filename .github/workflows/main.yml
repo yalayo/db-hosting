@@ -25,7 +25,7 @@ jobs:
             cd ~/${{ secrets.WORK_DIR }}/docker
             docker compose down
             cd ~/
-            rm -rf ~/${{ secrets.WORK_DIR }}/
+            rm -rf ~/${{ secrets.WORK_DIR }}
             mkdir ~/${{ secrets.WORK_DIR }}
           else
             mkdir ~/${{ secrets.WORK_DIR }}
