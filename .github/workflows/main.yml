@@ -25,7 +25,6 @@ jobs:
             cd ~/${{ secrets.WORK_DIR }}/docker
             docker compose down
             cd ~/
-            ls -la
             rm -rf ${{ secrets.WORK_DIR }}/
             mkdir ~/${{ secrets.WORK_DIR }}
           else
@@ -34,7 +33,6 @@ jobs:
           exit"
       - name: Copy the docker-compose config
         run: |
-          ls -la  
           scp -r ./docker ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.WORK_DIR }}
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
             cd ~/${{ secrets.WORK_DIR }}/docker
